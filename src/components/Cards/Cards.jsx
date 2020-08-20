@@ -1,11 +1,16 @@
 import React from 'react';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import { Spinner } from '../../components';
+
 import CountUp from 'react-countup';
 import cx from 'classnames';
 
 import styles from './Cards.module.css';
 
 const Cards = (props) => {
+  if (props.data === 'undefined') {
+    return <Spinner />;
+  }
   const { confirmed, recovered, deaths, lastUpdate } = props.data;
 
   if (!confirmed) {
